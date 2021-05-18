@@ -9,7 +9,7 @@ export default [
 	},
 	{
 		component: JobPostedPage,
-		path: '/a',
+		path: 'dang-viec-lam',
 		title: '',
 		exact: true
 	},

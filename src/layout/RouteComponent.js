@@ -7,13 +7,12 @@ const RouteComponent = (props) => {
   const { Content } = Layout;
   return (
     <Router history={history}>
-    <Navbar> </Navbar>
+      <Navbar> </Navbar>
       <Switch>
-      <PrivateRoutes></PrivateRoutes>
+          <PrivateRoutes></PrivateRoutes>
         </Switch>
     </Router>
   );
 };
 
 export default RouteComponent;
-

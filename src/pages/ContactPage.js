@@ -14,13 +14,19 @@ const ContactPage = () => {
             <strong> My name is Anh Nguyen </strong>
           </div>
 
+          <div className = "contact-container">
           <p className="bio">Creative Designer & Web Developer</p>
           <p className="bio-2">
             Currently, a student majors in Computer Science at San Jose State
             University, and wish to become a Java full stack developer.
           </p>
-          <p>Email: bonguyens2001@gmail.com</p>
-          <p>Phone Number: (669)-265-8988</p>
+          <div>
+          <span>Email: bonguyens2001@gmail.com</span>
+          </div>
+          <div>
+          <span>Phone Number: (669)-265-8988</span>
+          </div>
+          </div>
 
           <div className="icons">
             <a

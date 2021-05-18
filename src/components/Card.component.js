@@ -5,8 +5,7 @@ const Card = (props) => {
     if (e.target.value == 0) {
       history.push("/vieclam-va-nha");
     } else if (e.target.value == 1) {
-      history.push("/a");
-      window.location.reload()
+      history.push("/dang-viec-lam");
     } else if (e.target.value == 2) {
       history.push("/dang-bai-ban-nha");
     }
