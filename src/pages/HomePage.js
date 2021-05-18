@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="services" id="home-page">
-        <p>Tìm jobs không khó</p>
+        <p>Việc Làm San Jose</p>
         <div className="card-services">
           {cardProps.map((card, index) => {
             return (

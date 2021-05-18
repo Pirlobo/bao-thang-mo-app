@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-
+import Navbar from "../../components/Navbar.component";
 const MapAllowedRoutes = (props) => {
   const { routes, basePath, isAddNotFound } = props;
   const match = useRouteMatch(basePath);
