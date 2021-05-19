@@ -7,7 +7,7 @@ const Card = (props) => {
     } else if (e.target.value == 1) {
       history.push("/dang-viec-lam");
     } else if (e.target.value == 2) {
-      history.push("/cho-thue-nha");
+      history.push("/cho-thue-phong");
     }
     else if (e.target.value == 3) {
       history.push("/ban-xe");
