@@ -3,11 +3,14 @@ import history from "../History";
 const Card = (props) => {
   const handleClick = (e) => {
     if (e.target.value == 0) {
-      history.push("/vieclam-va-nha");
+      history.push("/tim-kiem");
     } else if (e.target.value == 1) {
       history.push("/dang-viec-lam");
     } else if (e.target.value == 2) {
-      history.push("/dang-bai-ban-nha");
+      history.push("/cho-thue-nha");
+    }
+    else if (e.target.value == 3) {
+      history.push("/ban-xe");
     }
   };
   return (

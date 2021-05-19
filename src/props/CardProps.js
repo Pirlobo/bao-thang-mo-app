@@ -1,5 +1,6 @@
 export const cardProps = [
-    {title : 'Việc Làm & Nhà', description : 'Tìm việc ko khó, giá nhà phải chăng'},
-    {title : 'Đăng Việc Làm', description : 'Tìm việc ko khó, giá nhà phải chăng'},
-    {title : 'Bán Nhà', description : 'Đăng bài bán nhà tại đây'},
+    {title : 'Việc làm, mua xe, thuê nhà', description : 'Tìm việc làm, mua xe, mua nhà tại đây'},
+    {title : 'Đăng Việc Làm', description : 'Đăng việc làm tại đây'},
+    {title : 'Cho thuê nhà', description : 'Cho thuê nhà tại đây'},
+    {title : 'Bán xe', description : 'Bán xe tại đây'},
 ]

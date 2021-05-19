@@ -198,7 +198,7 @@ padding-left: 0.2rem;
   );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     font-size: 3rem;
     font-weight: bold;
 }
@@ -243,9 +243,7 @@ padding-left: 0.2rem;
   .introduction-container {
     text-align: center;
   }
-}
-@media screen and (max-width: 1300px) {
-.card-services{
+  .card-services{
     display: grid;
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr;
@@ -253,23 +251,25 @@ padding-left: 0.2rem;
     justify-items: center;
 }
 
+}
+@media screen and (max-width: 1200px) {
   .introduction {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
   }
 }
 .card {
   border-radius: 4px;
   width: 300px;
-  height: 400px;
+  height: 450px;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in;
   color: white;
   font-weight: bold;
 }
@@ -278,10 +278,12 @@ padding-left: 0.2rem;
   font-weight: bold;
 }
 .card {
-  background: linear-gradient(to right, #a6ffcb, #12d8fa, #1fa2ff);
+  background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
 }
 .card-services > .card:nth-child(2) {
-  transform: scale(1.1) ;
+  background: linear-gradient(to right, #a6ffcb, #12d8fa, #1fa2ff);
+}
+.card-services > .card:nth-child(3) {
   background-image: linear-gradient(
     -225deg,
     #231557 0%,
@@ -308,10 +310,10 @@ padding-left: 0.2rem;
 
 .card-services{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     align-self: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 
