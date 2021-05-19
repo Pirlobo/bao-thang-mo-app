@@ -172,7 +172,8 @@ padding-left: 0.2rem;
 .icons a#youtube {
   color: red;
 }
-.navbar_toggle i {
+.navbar_toggle > i {
+  font-size: 1.5rem;
   color: white;
 }
 .navbar_toggle {
@@ -243,15 +244,17 @@ padding-left: 0.2rem;
   .introduction-container {
     text-align: center;
   }
-  .card-services{
+}
+@media screen and (max-width: 768px) {
+  .card-services#responsive{
     display: grid;
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr;
     gap: 1rem;
     justify-items: center;
 }
-
 }
+
 @media screen and (max-width: 1200px) {
   .introduction {
     display: flex;
@@ -259,6 +262,15 @@ padding-left: 0.2rem;
     justify-content: center;
     align-items: center;
   }
+}
+@media screen and (max-width: 1300px) {
+  .card-services{
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    justify-items: center;
+}
 }
 .card {
   border-radius: 4px;

@@ -7,7 +7,7 @@ const HomePage = () => {
     <div className="container">
       <div className="services" id="home-page">
         <p>Việc Làm San Jose</p>
-        <div className="card-services">
+        <div className="card-services" id = "responsive">
           {cardProps.map((card, index) => {
             return (
               <Card
