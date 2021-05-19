@@ -1,5 +1,7 @@
 import JobPostedPage from '../../pages/JobPostedPage';
 import HomePage from '../../pages/HomePage';
+import CarPostedPage from '../../pages/CarPostedPage';
+import RoomPostedPage from '../../pages/RoomPostedPage';
 export default [
     {
 		component: HomePage,
@@ -13,5 +15,16 @@ export default [
 		title: '',
 		exact: true
 	},
-    
+	{
+		component: CarPostedPage,
+		path: 'ban-xe',
+		title: '',
+		exact: true
+	},
+    {
+		component: RoomPostedPage,
+		path: 'cho-thue-phong',
+		title: '',
+		exact: true
+	},
 ]

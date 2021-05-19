@@ -1,35 +1,51 @@
-import { Form, Input, Button, InputNumber, Checkbox, Upload } from "antd";
+import { Form, Input, Button, InputNumber, Checkbox, Upload, Modal } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "antd/dist/antd.css";
 import phoneImage from "../assets/images/phone.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-const JobPostedPage = (props) => {
+import { PlusOutlined } from '@ant-design/icons';
+const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+const RoomPostedPage = (props) => {
   const [form] = Form.useForm();
   const phoneImage =
     "https://raw.githubusercontent.com/briancodex/react-form-v1/286f4a4603bda257ae001dc57c74d7f30bd4eedb/public/img/img-4.svg";
-  // const dispatch = useDispatch();
-  // const security = useSelector((state) => state.security);
-  // const error = useSelector((state) => state.error);
 
-  // useEffect(() => {
-  //   if (security.validToken) {
-  //     props.history.push("/");
-  //   }
+  const [state, setState] = useState({
+    previewVisible: false,
+    previewImage: '',
+    previewTitle: '',
+    fileList: [
+      
+   
+    ],
+  })
+  const handleCancel = () => setState({...state, previewVisible: false });
 
-  // }, [security.validToken]);
-  const normFile = (e) => {
-    console.log("Upload event:", e);
-
-    if (Array.isArray(e)) {
-      return e;
+  const handlePreview = async file => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
     }
 
-    return e && e.fileList;
+    setState({
+        ...state,
+        previewImage: file.url || file.preview,
+        previewVisible: true,
+        previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
+      });
   };
-
+  const handleChange = ({ fileList }) => setState({...state, 
+fileList: fileList,
+});
   const handleSubmit = () => {
     form.validateFields().then((values) => {
       // dispatch(login(values));
@@ -43,6 +59,12 @@ const JobPostedPage = (props) => {
     justifyContent: "center",
     alignItems: "center",
   };
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div style={{ marginTop: 8 }}>Room Image</div>
+    </div>
+  );
   return (
     <div style={style}>
       <div className="inner-container">
@@ -56,7 +78,7 @@ const JobPostedPage = (props) => {
           />
         </div>
         <div className="right-inner-container">
-          <Form form={form} onFinish={handleSubmit}>
+          <Form style={{ width: "50%" }} form={form} onFinish={handleSubmit}>
             <Form.Item
               name="description"
               rules={[
@@ -68,10 +90,28 @@ const JobPostedPage = (props) => {
             >
               <Input.TextArea
                 style={{ height: "150px" }}
-                placeholder="Mô tả công việc"
+                placeholder="Mô tả nội dung bài bán xe của bạn"
               />
             </Form.Item>
-
+            <Form.Item>
+            <Upload
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          listType="picture-card"
+          fileList={state.fileList}
+          onPreview={handlePreview}
+          onChange={handleChange}
+        >
+          {state.fileList.length >= 3 ? null : uploadButton}
+        </Upload>
+        <Modal
+          visible={state.previewVisible}
+          title={state.previewTitle}
+          footer={null}
+          onCancel={handleCancel}
+        >
+          <img alt="example" style={{ width: '100%' }} src={state.previewImage} />
+        </Modal>
+            </Form.Item>
             <Form.Item
               name="phone"
               rules={[
@@ -94,7 +134,6 @@ const JobPostedPage = (props) => {
             >
               <Input placeholder="Phone Number"></Input>
             </Form.Item>
-
             <Form.Item
               name="cardNumber"
               rules={[
@@ -107,7 +146,7 @@ const JobPostedPage = (props) => {
               <Input placeholder="Card number" />
             </Form.Item>
             <Form.Item
-              style={{ display: "inline-block" }}
+              style={{ width: "35%", display: "inline-block" }}
               name="month"
               rules={[
                 {
@@ -116,10 +155,10 @@ const JobPostedPage = (props) => {
                 },
               ]}
             >
-              <Input placeholder="Expiration month" />
+              <Input placeholder="Exp month" />
             </Form.Item>
             <Form.Item
-              style={{ display: "inline-block" }}
+              style={{ width: "35%", display: "inline-block" }}
               name="year"
               rules={[
                 {
@@ -128,25 +167,20 @@ const JobPostedPage = (props) => {
                 },
               ]}
             >
-              <Input placeholder="Expiration year" />
+              <Input placeholder="Exp year" />
             </Form.Item>
 
-            <Form.Item>
-              <Form.Item
-                name="CVC"
-                rules={[
-                  {
-                    required: true,
-                    message: "This field is required!",
-                  },
-                ]}
-              >
-                <Input style={{ width: "100px" }} placeholder="Số CVC" />
-              </Form.Item>
-
-              <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox style={{ color: "white" }}>Có in đậm không?</Checkbox>
-              </Form.Item>
+            <Form.Item
+              style={{ width: "30%", display: "inline-block" }}
+              name="CVC"
+              rules={[
+                {
+                  required: true,
+                  message: "This field is required!",
+                },
+              ]}
+            >
+              <Input placeholder="Số CVC" />
             </Form.Item>
 
             <Form.Item>
@@ -160,4 +194,4 @@ const JobPostedPage = (props) => {
     </div>
   );
 };
-export default JobPostedPage;
+export default RoomPostedPage;
