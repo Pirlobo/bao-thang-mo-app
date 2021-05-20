@@ -3,14 +3,18 @@ import PrivateRoutes from "../utils/route/PrivateRoutes";
 import history from "../History";
 import Navbar from "../components/Navbar.component";
 import { Layout } from "antd";
+import ResponsiveNavbar from "../components/ResponsiveNavnar"
 const RouteComponent = (props) => {
   const { Content } = Layout;
   return (
     <Router history={history}>
       <Navbar> </Navbar>
+      <div className="container">
+      <ResponsiveNavbar></ResponsiveNavbar>
       <Switch>
           <PrivateRoutes></PrivateRoutes>
         </Switch>
+      </div>
     </Router>
   );
 };

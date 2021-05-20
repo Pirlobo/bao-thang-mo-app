@@ -44,10 +44,10 @@
 .dropdown-content#rao-vat-menu a:hover{
   color: #03b1fc !important;
 }
-.main-links > .links a:hover {
+.main-links > .links a:hover{
   transform: scale(1.05);
 }
-.main-links > .links a:after {
+.main-links > .links a:after, .res-links li a:after {
   transition: all ease-in-out 0.2s;
   background: repeat scroll 0 0 white;
   content: "";
@@ -55,8 +55,13 @@
   height: 1.5px;
   width: 0;
 }
-
-.main-links > .links li a:hover:after{
+.res-links li {
+  transition: all 0.2s ease;
+}
+.res-links li:hover {
+  transform: scale(1.05)
+}
+.main-links > .links li a:hover:after, .res-links li a:hover:after{
   width: 100%;
 }
 .links {
@@ -65,6 +70,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+li{
   list-style: none;
 }
 .link-items {
@@ -84,7 +91,7 @@ padding-left: 0.2rem;
   display: flex;
   flex-direction: row;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   justify-content:center;
   align-items: center;
 }
@@ -92,11 +99,10 @@ padding-left: 0.2rem;
   font-weight: bold;
 }
 .main-logo i {
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding-left: .5rem;
 }
 .container {
-  top: 4rem;
   position: relative;
   width: 100%;
   height: 100%;
@@ -111,6 +117,8 @@ padding-left: 0.2rem;
 }
 
 .contact {
+  position: relative;
+  top: 4rem;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -190,6 +198,8 @@ padding-left: 0.2rem;
   display: none;
 }
 .services {
+  position: relative;
+  top: 4rem;
   width: 100%;
   height: auto;
   text-align: center;
@@ -275,16 +285,18 @@ padding-left: 0.2rem;
     display: flex !important;
     justify-content: center;
     align-items: center; 
+    width: 90vw !important;
+    height: 90% !important;
   }
   .right-inner-container{
     display: flex !important;
     align-items: center !important; 
   }
-  Form {
-    width: 80% !important;
-    }
 .left-inner-container{
   display: none !important;
+}
+Form {
+  width: 80% !important;
 }
 }
 @media screen and (max-width: 1300px) {
@@ -343,7 +355,6 @@ padding-left: 0.2rem;
 }
 a {
   position: relative;
-  z-index: 2;
   color: #fff !important;
   text-decoration: none;
 }
@@ -412,9 +423,7 @@ a {
   padding-left: .5rem;
 }
 .inner-container{
-  position: relative;
-  top: 1rem;
-  border-radius: 15px;
+  border-radius: 5px;
   background: linear-gradient(
     90deg,
     rgb(39, 176, 255) 0%,
@@ -422,11 +431,10 @@ a {
   );
   display: grid;
   grid-template-columns: 40% 60%;
-  width: 90%;
+  width: 100%;
   height: 90%;
   z-index: 2;
   overflow: hidden;
-  box-shadow:  1px 1px 1px 1px gray;
 }
 .left-inner-container{
   display: flex;
@@ -444,15 +452,49 @@ a {
   align-items: flex-start; 
 }
 .common-container{
+  position: relative;
+  top: 1.5rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center
 }
-.navbar#res-nav{
+.res-nav{
+  border-radius: 6px;
   position: absolute;
-  top: 0rem;
+  top: 3.5rem;
+  right: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #03b1fc, #099ddd);
+  width: 100%;
+  height: fit-content;
+  transition: all 0.5s ease;
+}
+.res-nav.active{
+  right: 0% !important;
+}
+.res-links{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.icons i {
+  transition: all 0.5s ease;
+}
+.icons i:hover {
+  font-size: 1.1rem;
+  transform: rotate(360deg)
+}
+.res-links li {
+  font-size: 1.2rem;
+  padding-top: 2rem;
+padding-bottom: 2rem;
 }
 /* .test{
   width: 100%;

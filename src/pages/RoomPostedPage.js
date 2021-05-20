@@ -1,4 +1,12 @@
-import { Form, Input, Button, InputNumber, Checkbox, Upload, Modal } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  InputNumber,
+  Checkbox,
+  Upload,
+  Modal,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,15 +14,15 @@ import "antd/dist/antd.css";
 import phoneImage from "../assets/images/phone.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from "@ant-design/icons";
 const getBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+};
 const RoomPostedPage = (props) => {
   const [form] = Form.useForm();
   const phoneImage =
@@ -22,30 +30,27 @@ const RoomPostedPage = (props) => {
 
   const [state, setState] = useState({
     previewVisible: false,
-    previewImage: '',
-    previewTitle: '',
-    fileList: [
-      
-   
-    ],
-  })
-  const handleCancel = () => setState({...state, previewVisible: false });
+    previewImage: "",
+    previewTitle: "",
+    fileList: [],
+  });
+  const handleCancel = () => setState({ ...state, previewVisible: false });
 
-  const handlePreview = async file => {
+  const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
 
     setState({
-        ...state,
-        previewImage: file.url || file.preview,
-        previewVisible: true,
-        previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
-      });
+      ...state,
+      previewImage: file.url || file.preview,
+      previewVisible: true,
+      previewTitle:
+        file.name || file.url.substring(file.url.lastIndexOf("/") + 1),
+    });
   };
-  const handleChange = ({ fileList }) => setState({...state, 
-fileList: fileList,
-});
+  const handleChange = ({ fileList }) =>
+    setState({ ...state, fileList: fileList });
   const handleSubmit = () => {
     form.validateFields().then((values) => {
       // dispatch(login(values));
@@ -87,23 +92,27 @@ fileList: fileList,
               />
             </Form.Item>
             <Form.Item>
-            <Upload
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          listType="picture-card"
-          fileList={state.fileList}
-          onPreview={handlePreview}
-          onChange={handleChange}
-        >
-          {state.fileList.length >= 3 ? null : uploadButton}
-        </Upload>
-        <Modal
-          visible={state.previewVisible}
-          title={state.previewTitle}
-          footer={null}
-          onCancel={handleCancel}
-        >
-          <img alt="example" style={{ width: '100%' }} src={state.previewImage} />
-        </Modal>
+              <Upload
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                listType="picture-card"
+                fileList={state.fileList}
+                onPreview={handlePreview}
+                onChange={handleChange}
+              >
+                {state.fileList.length >= 3 ? null : uploadButton}
+              </Upload>
+              <Modal
+                visible={state.previewVisible}
+                title={state.previewTitle}
+                footer={null}
+                onCancel={handleCancel}
+              >
+                <img
+                  alt="example"
+                  style={{ width: "100%" }}
+                  src={state.previewImage}
+                />
+              </Modal>
             </Form.Item>
             <Form.Item
               name="phone"
