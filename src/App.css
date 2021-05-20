@@ -222,15 +222,6 @@ padding-left: 0.2rem;
     font-weight: bold;
 }
 @media screen and (max-width: 960px) {
-  .navbar_toggle {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .main-links > ul {
-    display: none;
-  }
   .contact {
     margin-top: 2rem;
     width: 100%;
@@ -263,6 +254,9 @@ padding-left: 0.2rem;
   }
 }
 @media screen and (max-width: 768px) {
+  .main-links > ul {
+    display: none;
+  }
   .card-services#responsive{
     display: grid;
     grid-template-columns: 1fr !important;
@@ -270,7 +264,12 @@ padding-left: 0.2rem;
     gap: 1rem;
     justify-items: center;
 }
-
+.navbar_toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 }
 @media screen and (max-width: 1200px) {
   .introduction {
