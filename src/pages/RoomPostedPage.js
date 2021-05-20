@@ -76,7 +76,7 @@ const RoomPostedPage = (props) => {
           />
         </div>
         <div className="right-inner-container">
-          <Form style={{ width: "50%" }} form={form} onFinish={handleSubmit}>
+          <Form form={form} onFinish={handleSubmit}>
             <Form.Item
               name="description"
               rules={[
@@ -88,7 +88,7 @@ const RoomPostedPage = (props) => {
             >
               <Input.TextArea
                 style={{ height: "150px" }}
-                placeholder="Mô tả nội dung bài bán xe của bạn"
+                placeholder="Mô tả nội dung bài viết"
               />
             </Form.Item>
             <Form.Item>

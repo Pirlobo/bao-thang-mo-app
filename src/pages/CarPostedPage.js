@@ -78,7 +78,7 @@ const CarPostedPage = (props) => {
             />
           </div>
           <div className="right-inner-container">
-            <Form style={{ width: "50%" }} form={form} onFinish={handleSubmit}>
+            <Form form={form} onFinish={handleSubmit}>
               <Form.Item
                 name="description"
                 rules={[
