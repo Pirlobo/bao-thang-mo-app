@@ -351,7 +351,7 @@ Form {
   margin-top: 1rem;
   background: rgb(43, 43, 43);
   width: 100px;
-  transition: all 0.3s ease
+  transition: all 0.2s ease
 }
 a {
   position: relative;
@@ -359,7 +359,7 @@ a {
   text-decoration: none;
 }
 .btn-get-started:hover {
-  background: black;
+  background: #099ddd
 }
 .card-services{
     display: grid;
