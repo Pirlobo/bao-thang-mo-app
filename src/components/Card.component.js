@@ -22,7 +22,7 @@ const Card = (props) => {
         value={props.value}
         className="btn btn-get-started"
       >
-        Get Started
+        <a>Get Started</a>
       </button>
     </div>
   );

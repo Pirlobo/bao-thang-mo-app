@@ -254,7 +254,6 @@ padding-left: 0.2rem;
     justify-items: center;
 }
 }
-
 @media screen and (max-width: 1200px) {
   .introduction {
     display: flex;
@@ -262,6 +261,23 @@ padding-left: 0.2rem;
     justify-content: center;
     align-items: center;
   }
+}
+@media screen and (max-width: 1250px) {
+  .inner-container{
+    display: flex !important;
+    justify-content: center;
+    align-items: center; 
+  }
+  .right-inner-container{
+    display: flex !important;
+    align-items: center !important; 
+  }
+  Form {
+    width: 80% !important;
+    }
+.left-inner-container{
+  display: none !important;
+}
 }
 @media screen and (max-width: 1300px) {
   .card-services{
@@ -307,19 +323,25 @@ padding-left: 0.2rem;
 .card h4{
     margin-top: .5rem;
 }
-.btn-get-started{
-    color: white;
-    margin-top: 1rem;
-    background: rgb(43, 43, 43);
-    width: 100px;
-}
-.btn-get-started:hover{
-    background: linear-gradient(to right, #03b1fc, #006894);
-}
 .card:hover{
     transform: scale(1.05);
 }
-
+.btn-get-started{
+  color: white;
+  margin-top: 1rem;
+  background: rgb(43, 43, 43);
+  width: 100px;
+  transition: all 0.3s ease
+}
+a {
+  position: relative;
+  z-index: 2;
+  color: #fff !important;
+  text-decoration: none;
+}
+.btn-get-started:hover {
+  background: black;
+}
 .card-services{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -413,6 +435,14 @@ padding-left: 0.2rem;
   justify-content: center;
   align-items: flex-start; 
 }
+.common-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
 /* .test{
   width: 100%;
   height: 100%;
@@ -421,3 +451,4 @@ padding-left: 0.2rem;
   justify-items: center;
   align-content: center;
 } */
+

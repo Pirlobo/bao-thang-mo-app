@@ -36,15 +36,8 @@ const JobPostedPage = (props) => {
     });
   };
   var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-  const style = {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
   return (
-    <div style={style}>
+    <div className="common-container">
       <div className="inner-container">
         <div className="left-inner-container">
           <LazyLoadImage
@@ -141,7 +134,7 @@ const JobPostedPage = (props) => {
                   },
                 ]}
               >
-                <Input style={{ width: "100px" }} placeholder="Số CVC" />
+                <Input style={{ width: "100px" }} placeholder="Số CVV" />
               </Form.Item>
 
               <Form.Item name="remember" valuePropName="checked" noStyle>

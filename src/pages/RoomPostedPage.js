@@ -52,13 +52,6 @@ fileList: fileList,
     });
   };
   var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-  const style = {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -66,7 +59,7 @@ fileList: fileList,
     </div>
   );
   return (
-    <div style={style}>
+    <div className="common-container">
       <div className="inner-container">
         <div className="left-inner-container">
           <LazyLoadImage
@@ -180,7 +173,7 @@ fileList: fileList,
                 },
               ]}
             >
-              <Input placeholder="Số CVC" />
+              <Input placeholder="Số CVV" />
             </Form.Item>
 
             <Form.Item>
