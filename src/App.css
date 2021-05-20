@@ -34,8 +34,15 @@
 }
 .nav-container a {
   text-decoration: none;
-  color: white;
+  color: white !important;
   transition: all 0.3s ease;
+}
+.dropdown-content#rao-vat-menu a{
+  color: black !important;
+  transition: all 0.3s ease;
+}
+.dropdown-content#rao-vat-menu a:hover{
+  color: #03b1fc !important;
 }
 .main-links > .links a:hover {
   transform: scale(1.05);
@@ -451,4 +458,3 @@ a {
   justify-items: center;
   align-content: center;
 } */
-

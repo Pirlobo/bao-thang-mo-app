@@ -17,7 +17,7 @@ const Dropdown = (props) => {
       {defaultProps.title}
       <i className="fa fa-caret-down"></i>
     </button>
-    <div className="dropdown-content">
+    <div className="dropdown-content" id = "rao-vat-menu">
     {defaultProps.options.map((option, index) => {
         return (
             <a  key={index} href={option.href}>

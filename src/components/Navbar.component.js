@@ -1,7 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import Dropdown from "./Dropdown.component";
 import { Title, Options } from "../props/DropdownProps";
+import { useDispatch, useSelector } from "react-redux";
+import types from '../utils/ActionTypes'
 const Navbar = (props) => {
+  const { SET_MENU_BAR, SET_CANCEL } = types
+  const state = useSelector((state) => state.navbar)
+  const dispatch = useDispatch()
+  const onCancel = (e) => {
+    dispatch({
+      type: SET_CANCEL,
+      payload: {}
+    })
+  }
+  const onClick = (e) => {
+    dispatch({
+      type: SET_MENU_BAR,
+      payload: {}
+    })
+  }
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -25,8 +42,12 @@ const Navbar = (props) => {
             </li>
           </ul>
           <div className="navbar_toggle">
-            <i className="fas fa-bars" id="bar"></i>
-            {/* <i className="far fa-window-close" id = "cancel"></i> */}
+          {state.isInitialMenuBar ? 
+            <i onClick={onClick} className="fas fa-bars" id="bar"></i>
+           : 
+           <i onClick={onCancel} class="fas fa-window-close"></i>
+          
+           }
           </div>
         </div>
       </div>
