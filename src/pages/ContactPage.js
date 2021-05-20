@@ -28,7 +28,7 @@ const ContactPage = () => {
           </div>
           </div>
 
-          <div className="icons">
+          <div className="icons" id = "contact-icons"> 
             <a
               href="https://www.facebook.com/profile.php?id=100009838694132"
               id="fb"
