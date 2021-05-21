@@ -9,8 +9,8 @@ const RouteComponent = (props) => {
   return (
     <Router history={history}>
       <Navbar> </Navbar>
-      <div className="container">
       <ResponsiveNavbar></ResponsiveNavbar>
+      <div className="container">
       <Switch>
           <PrivateRoutes></PrivateRoutes>
         </Switch>
