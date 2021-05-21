@@ -1,4 +1,12 @@
-import { Form, Input, Button, InputNumber, Checkbox, Upload } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  InputNumber,
+  Checkbox,
+  Upload,
+  Select,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,36 +14,24 @@ import "antd/dist/antd.css";
 import phoneImage from "../assets/images/phone.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import types from "../utils/ActionTypes";
 const JobPostedPage = (props) => {
-  const [form] = Form.useForm();
   const phoneImage =
     "https://raw.githubusercontent.com/briancodex/react-form-v1/286f4a4603bda257ae001dc57c74d7f30bd4eedb/public/img/img-4.svg";
-  // const dispatch = useDispatch();
-  // const security = useSelector((state) => state.security);
-  // const error = useSelector((state) => state.error);
-
-  // useEffect(() => {
-  //   if (security.validToken) {
-  //     props.history.push("/");
-  //   }
-
-  // }, [security.validToken]);
-  const normFile = (e) => {
-    console.log("Upload event:", e);
-
-    if (Array.isArray(e)) {
-      return e;
-    }
-
-    return e && e.fileList;
-  };
-
-  const handleSubmit = () => {
+  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  const { Option } = Select;
+  const { SET_JOB_OBJECT } = types;
+  const [form] = Form.useForm();
+  const state = useSelector((state) => state.upload);
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
     form.validateFields().then((values) => {
-      // dispatch(login(values));
+      dispatch({
+        type: SET_JOB_OBJECT,
+        payload: values,
+      });
     });
   };
-  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   return (
     <div className="common-container">
       <div className="inner-container">
@@ -100,7 +96,7 @@ const JobPostedPage = (props) => {
               <Input placeholder="Card number" />
             </Form.Item>
             <Form.Item
-              style={{ display: "inline-block" }}
+              style={{ width: "50%" ,display: "inline-block" }}
               name="month"
               rules={[
                 {
@@ -109,10 +105,15 @@ const JobPostedPage = (props) => {
                 },
               ]}
             >
-              <Input placeholder="Expiration month" />
+              <InputNumber
+                style={{ width: "100%" }}
+                min={1}
+                max={12}
+                placeholder="Exp month"
+              />
             </Form.Item>
             <Form.Item
-              style={{ display: "inline-block" }}
+              style={{ width: "50%" ,display: "inline-block" }}
               name="year"
               rules={[
                 {
@@ -121,7 +122,12 @@ const JobPostedPage = (props) => {
                 },
               ]}
             >
-              <Input placeholder="Expiration year" />
+              <InputNumber
+                style={{ width: "100%" }}
+                min={1}
+                max={12}
+                placeholder="Exp year"
+              />
             </Form.Item>
 
             <Form.Item>
@@ -137,7 +143,7 @@ const JobPostedPage = (props) => {
                 <Input style={{ width: "100px" }} placeholder="Số CVV" />
               </Form.Item>
 
-              <Form.Item name="remember" valuePropName="checked" noStyle>
+              <Form.Item name="isChecked" valuePropName="checked" noStyle>
                 <Checkbox style={{ color: "white" }}>Có in đậm không?</Checkbox>
               </Form.Item>
             </Form.Item>

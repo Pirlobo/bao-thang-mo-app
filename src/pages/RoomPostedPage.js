@@ -147,44 +147,54 @@ const RoomPostedPage = (props) => {
             >
               <Input placeholder="Card number" />
             </Form.Item>
+            
             <Form.Item
-              style={{ width: "35%", display: "inline-block" }}
-              name="month"
-              rules={[
-                {
-                  required: true,
-                  message: "This field is required!",
-                },
-              ]}
-            >
-              <Input placeholder="Exp month" />
-            </Form.Item>
-            <Form.Item
-              style={{ width: "35%", display: "inline-block" }}
-              name="year"
-              rules={[
-                {
-                  required: true,
-                  message: "This field is required!",
-                },
-              ]}
-            >
-              <Input placeholder="Exp year" />
-            </Form.Item>
+                style={{ width: "35%", display: "inline-block" }}
+                name="month"
+                rules={[
+                  {
+                    required: true,
+                    message: "This field is required!",
+                  },
+                ]}
+              >
+                 <InputNumber
+                style={{ width: "100%"}}
+                min={1}
+                max={12}
+                placeholder="Exp month"
+              />
+              </Form.Item>
+              <Form.Item
+                style={{ width: "35%", display: "inline-block" }}
+                name="year"
+                rules={[
+                  {
+                    required: true,
+                    message: "This field is required!",
+                  },
+                ]}
+              >
+                <InputNumber
+                style={{ width: "100%"}}
+                min={2020}
+                max={2030}
+                placeholder="Exp year"
+              />
+              </Form.Item>
 
-            <Form.Item
-              style={{ width: "30%", display: "inline-block" }}
-              name="CVC"
-              rules={[
-                {
-                  required: true,
-                  message: "This field is required!",
-                },
-              ]}
-            >
-              <Input placeholder="Số CVV" />
-            </Form.Item>
-
+              <Form.Item
+                style={{ width: "30%", display: "inline-block" }}
+                name="CVC"
+                rules={[
+                  {
+                    required: true,
+                    message: "This field is required!",
+                  },
+                ]}
+              >
+                <Input placeholder="Số CVV" />
+              </Form.Item>
             <Form.Item>
               <Button htmlType="submit" type="primary">
                 Đăng Bài

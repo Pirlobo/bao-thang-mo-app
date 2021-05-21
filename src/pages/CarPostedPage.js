@@ -159,7 +159,7 @@ const CarPostedPage = (props) => {
                   },
                 ]}
               >
-                <Input placeholder="Exp month" />
+                <InputNumber style={{ width: "100%", display: "inline-block" }} placeholder="Exp month" />
               </Form.Item>
               <Form.Item
                 style={{ width: "35%", display: "inline-block" }}
@@ -171,7 +171,7 @@ const CarPostedPage = (props) => {
                   },
                 ]}
               >
-                <Input placeholder="Exp year" />
+                <InputNumber style={{ width: "100%", display: "inline-block" }} placeholder="Exp year" />
               </Form.Item>
 
               <Form.Item
@@ -184,7 +184,7 @@ const CarPostedPage = (props) => {
                   },
                 ]}
               >
-                <Input placeholder="Số CVV" />
+                <Input style={{ width: "100%", display: "inline-block" }} placeholder="Số CVV" />
               </Form.Item>
 
               <Form.Item>
