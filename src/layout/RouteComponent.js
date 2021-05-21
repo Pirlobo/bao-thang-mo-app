@@ -15,6 +15,7 @@ const RouteComponent = (props) => {
           <PrivateRoutes></PrivateRoutes>
         </Switch>
       </div>
+     
     </Router>
   );
 };
