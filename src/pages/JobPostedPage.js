@@ -32,15 +32,6 @@ const JobPostedPage = (props) => {
       });
     });
   };
-  useEffect(() => {
-    if (state.fileList.length > 0 && 
-      (state.fileList[state.fileList.length - 1].type == "image/jpeg" ||
-       state.fileList[state.fileList.length - 1].type == "image/png")
-    ) 
-    {
-    state.fileList[state.fileList.length - 1].status = 'done'
-    }
-  }, [state.fileList])
   return (
     <div className="common-container">
       <div className="inner-container">
