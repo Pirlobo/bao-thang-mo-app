@@ -7,7 +7,6 @@ import {
   Upload,
   Modal,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "antd/dist/antd.css";
@@ -15,7 +14,7 @@ import phoneImage from "../assets/images/phone.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { PlusOutlined } from "@ant-design/icons";
-import ResponsiveNavbar from "../components/ResponsiveNavnar";
+import types from "../utils/ActionTypes"
 const getBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -24,6 +23,7 @@ const getBase64 = (file) => {
     reader.onerror = (error) => reject(error);
   });
 };
+const { SET_CAR_0R_ROOM_OBJECT} = types
 const CarPostedPage = (props) => {
   const [form] = Form.useForm();
   const phoneImage =
@@ -35,6 +35,8 @@ const CarPostedPage = (props) => {
     previewTitle: "",
     fileList: [],
   });
+  const dispatch = useDispatch()
+  const object = useSelector((state) => state.upload)
   const handleCancel = () => setState({ ...state, previewVisible: false });
 
   const handlePreview = async (file) => {
@@ -51,10 +53,18 @@ const CarPostedPage = (props) => {
     });
   };
   const handleChange = ({ fileList }) =>
-    setState({ ...state, fileList: fileList });
+    setState({ ...state, fileList: fileList })
+    
   const handleSubmit = () => {
     form.validateFields().then((values) => {
-      // dispatch(login(values));
+      let filterListFiles = state.fileList.filter(file => 
+        (file.status == "done")
+      )
+      values['fileList'] = filterListFiles;
+      dispatch({
+        type: SET_CAR_0R_ROOM_OBJECT,
+        payload: values,
+      });
     });
   };
   var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -64,6 +74,15 @@ const CarPostedPage = (props) => {
       <div style={{ marginTop: 8 }}>Car Image</div>
     </div>
   );
+  useEffect(() => {
+    if (state.fileList.length > 0 && 
+      (state.fileList[state.fileList.length - 1].type == "image/jpeg" ||
+       state.fileList[state.fileList.length - 1].type == "image/png")
+    ) 
+    {
+    state.fileList[state.fileList.length - 1].status = 'done'
+    }
+  }, [state.fileList])
   return (
     <>
       <div className="common-container">
@@ -93,29 +112,29 @@ const CarPostedPage = (props) => {
                   placeholder="Mô tả nội dung bài bán xe của bạn"
                 />
               </Form.Item>
-              <Form.Item>
-                <Upload
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  listType="picture-card"
-                  fileList={state.fileList}
-                  onPreview={handlePreview}
-                  onChange={handleChange}
-                >
-                  {state.fileList.length >= 3 ? null : uploadButton}
-                </Upload>
-                <Modal
-                  visible={state.previewVisible}
-                  title={state.previewTitle}
-                  footer={null}
-                  onCancel={handleCancel}
-                >
-                  <img
-                    alt="example"
-                    style={{ width: "100%" }}
-                    src={state.previewImage}
-                  />
-                </Modal>
-              </Form.Item>
+              <Form.Item name = "fileList" >
+              <Upload
+                listType="picture-card"
+                fileList={state.fileList}
+                onPreview={handlePreview}
+                style={{ width: "100%" }}
+                onChange={handleChange}
+              >
+                {state.fileList.length >= 3 ? null : uploadButton}
+              </Upload>
+              <Modal
+                visible={state.previewVisible}
+                title={state.previewTitle}
+                footer={null}
+                onCancel={handleCancel}
+              >
+                <img
+                  alt="example"
+                  style={{ width: "100%" ,  height: "400px"}}
+                  src={state.previewImage}
+                />
+              </Modal>
+            </Form.Item>
               <Form.Item
                 name="phone"
                 rules={[
@@ -159,7 +178,8 @@ const CarPostedPage = (props) => {
                   },
                 ]}
               >
-                <InputNumber style={{ width: "100%", display: "inline-block" }} placeholder="Exp month" />
+                <InputNumber  min={1}
+                max={12} style={{ width: "100%", display: "inline-block" }} placeholder="Exp month" />
               </Form.Item>
               <Form.Item
                 style={{ width: "35%", display: "inline-block" }}
@@ -171,7 +191,8 @@ const CarPostedPage = (props) => {
                   },
                 ]}
               >
-                <InputNumber style={{ width: "100%", display: "inline-block" }} placeholder="Exp year" />
+                <InputNumber  min={2020}
+                max={2030} style={{ width: "100%", display: "inline-block" }} placeholder="Exp year" />
               </Form.Item>
 
               <Form.Item

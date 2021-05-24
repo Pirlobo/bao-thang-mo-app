@@ -1,5 +1,6 @@
 import React from "react";
 import history from "../History";
+import PropTypes from "prop-types";
 const Card = (props) => {
   const handleClick = (e) => {
     
@@ -31,6 +32,11 @@ const Card = (props) => {
       </button>
     </div>
   );
+};
+Card.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  value: PropTypes.number,
 };
 
 export default Card;

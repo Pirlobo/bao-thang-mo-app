@@ -32,6 +32,15 @@ const JobPostedPage = (props) => {
       });
     });
   };
+  useEffect(() => {
+    if (state.fileList.length > 0 && 
+      (state.fileList[state.fileList.length - 1].type == "image/jpeg" ||
+       state.fileList[state.fileList.length - 1].type == "image/png")
+    ) 
+    {
+    state.fileList[state.fileList.length - 1].status = 'done'
+    }
+  }, [state.fileList])
   return (
     <div className="common-container">
       <div className="inner-container">
@@ -124,8 +133,8 @@ const JobPostedPage = (props) => {
             >
               <InputNumber
                 style={{ width: "100%" }}
-                min={1}
-                max={12}
+                min={2020}
+                max={2030}
                 placeholder="Exp year"
               />
             </Form.Item>
