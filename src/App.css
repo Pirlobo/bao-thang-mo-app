@@ -231,7 +231,7 @@ font-weight: bold;
 @media screen and (max-width: 768px) {
   .common-container{
     top: 0 !important;
-    height: 170vh !important;
+    height: 175vh !important;
   }
   .right-inner-container{
     position: absolute;
